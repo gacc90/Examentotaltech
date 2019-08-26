@@ -28,5 +28,22 @@ namespace Examen.App.ViewModels
             SimpleIoc.Default.Register<LoginViewModel>();
             SimpleIoc.Default.Register<PersonaViewModel>();
         }
+
+        public static void ResetViewModels()
+        {
+            SimpleIoc.Default.Unregister<LoginViewModel>();
+            SimpleIoc.Default.Unregister<PersonaViewModel>();
+
+            SimpleIoc.Default.Register<LoginViewModel>();
+            SimpleIoc.Default.Register<PersonaViewModel>();
+        }
+
+        #region ViewModels
+
+        public LoginViewModel LoginViewModel => SimpleIoc.Default.GetInstance<LoginViewModel>();
+
+        public PersonaViewModel PersonaViewModel => SimpleIoc.Default.GetInstance<PersonaViewModel>();
+
+        #endregion
     }
 }

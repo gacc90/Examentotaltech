@@ -5,17 +5,25 @@
              xmlns:local="clr-namespace:Examen.App"
              x:Class="Examen.App.Views.Login.LoginView"
              NavigationPage.HasNavigationBar="False"
-             BindingContext="{Binding Source={StaticResource LocacionApp}, Path=LoginViewModel}">
+             BindingContext="{Binding Source={StaticResource LocacionApp}, Path=LoginViewModel}"
+             Style="{StaticResource LoginStyle}">
     <Grid>
 
         <Grid Padding="0" RowSpacing="0" ColumnSpacing="0">
             <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Padding="20,10,10,20">
-
+                <Grid HorizontalOptions="Center">
+                    <Image Source="{StaticResource imgLogo}" Grid.Row="0" Grid.Column="0" HeightRequest="120" WidthRequest="120" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                </Grid>
+                
+                <Label TextColor="White" Text="Correo"/>
                 <Entry x:Name="txtCorreo" TextColor="White" Text="{Binding Correo}" HeightRequest="50"/>
+                <Label TextColor="White" Text="Password"/>
                 <Entry x:Name="txtPassword" TextColor="White" Text="{Binding Password}" HeightRequest="50"/>
 
+                <Label TextColor="{Binding colorError}" IsVisible="{Binding MostrarError}" Text="{Binding MensajeError}"/>
+                
                 <Button Text="Ingresar" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="50" 
-                       BorderWidth="1" Command="{Binding IngresarCommand}"/>
+                       BorderWidth="1" BorderColor="White" TextColor="White" BackgroundColor="Transparent" Command="{Binding IngresarCommand}"/>
 
             </StackLayout>
         </Grid>

@@ -19,7 +19,8 @@ namespace Examen.App.ViewModels
 
         private string correo;
         private string password;
-        private string error;
+        private string errorMensaje;
+        private bool mostrarError;
 
         public string Correo
         {
@@ -39,10 +40,16 @@ namespace Examen.App.ViewModels
             }
         }
 
-        public string Error
+        public string MensajeError
         {
-            get => error;
-            set => Set(ref error, value);
+            get => errorMensaje;
+            set => Set(ref errorMensaje, value);
+        }
+
+        public bool MostrarError
+        {
+            get => mostrarError;
+            set => Set(ref mostrarError, value);
         }
 
         #endregion
@@ -87,6 +94,8 @@ namespace Examen.App.ViewModels
             {
                 foreach (var error in resultadoValidador.Errors)
                 {
+                    MostrarError = true;
+                    MensajeError = "Error";
                     //if ("Password" == error.PropertyName)
                     //{
                     //    MostrarErrorPassword = true;

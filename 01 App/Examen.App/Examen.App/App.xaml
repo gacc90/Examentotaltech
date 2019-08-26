@@ -6,11 +6,22 @@
     <Application.Resources>
         <vm:LocacionesViewModel x:Key="LocacionApp" />
 
+        <!--LOGIN BACKGRAUND-->
+        <Style x:Key="LoginStyle" TargetType="ContentPage">
+            <Setter Property="BackgroundColor" Value="#686de0" />
+        </Style>
+
         <!--IMAGEN LOGIN BACKGRAUND-->
         <OnPlatform x:Key="imgBackgraundLogin" 
                       x:TypeArguments="ImageSource"
                       iOS="backgraund.png"
                       Android="backgraund.png"/>
+
+        <!--LOGO-->
+        <OnPlatform x:Key="imgLogo" 
+                      x:TypeArguments="ImageSource"
+                      iOS="logo.png"
+                      Android="logo.png"/>
 
         <!--COLOR ERROR-->
         <Color x:Key="colorError">#ff6b6b</Color>
