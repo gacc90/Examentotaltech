@@ -19,6 +19,7 @@ namespace Examen.App.ViewModels
             navegacionServicio.Configure(ConstantesViewsApp.LoginView, typeof(LoginView));
             navegacionServicio.Configure(ConstantesViewsApp.PersonaView, typeof(PersonaView));
 
+
             //*****REGISTRAR SERVICIOS, INYECCION DE DEPENDENCIAS**********
             SimpleIoc.Default.Register<AdministradorNavegacion>(() => navegacionServicio);
             SimpleIoc.Default.Register<IAdministradorSettings, AdministradorSettings>();
