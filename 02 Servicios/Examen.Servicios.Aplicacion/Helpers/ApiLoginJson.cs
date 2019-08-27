@@ -38,20 +38,21 @@ namespace Examen.Servicios.Aplicacion.Helpers
             var usuarioResponse = new SingleResponse<Modelo.Usuario>();
             try
             {
-                var credenciales = new { usuario, password };
+                var credenciales = new {email = usuario, password };
                 var cuerpo = JsonConvert.SerializeObject(credenciales);
                 var content = new StringContent(cuerpo, Encoding.UTF8, "application/json");
-                var response = (await PostAsync("",content));
+                var response = (await PostAsync("api/login", content));
 
                 var json = await response.Content.ReadAsStringAsync();
-                var resultado = JsonConvert.DeserializeObject<SingleResponse<Modelo.Usuario>>(json);
-                usuarioResponse = resultado;
+                var resultado = JsonConvert.DeserializeObject<Modelo.Usuario>(json);               
                 if (response.IsSuccessStatusCode)
                 {                    
-                    usuarioResponse = resultado;
+                    usuarioResponse.Model = resultado;
                 }
                 else
                 {
+                    usuarioResponse.ExisteError = true;
+                    usuarioResponse.ErrorMensaje = "La contraseña o el correo es incorrecto.";
                     usuarioResponse.Model = null;
                 }
             }

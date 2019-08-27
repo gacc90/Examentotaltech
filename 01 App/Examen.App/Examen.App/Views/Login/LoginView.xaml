@@ -18,9 +18,9 @@
                 <Label TextColor="White" Text="Correo"/>
                 <Entry x:Name="txtCorreo" TextColor="White" Text="{Binding Correo}" HeightRequest="50"/>
                 <Label TextColor="White" Text="Password"/>
-                <Entry x:Name="txtPassword" TextColor="White" Text="{Binding Password}" HeightRequest="50"/>
+                <Entry x:Name="txtPassword" TextColor="White" IsPassword="True" Text="{Binding Password}" HeightRequest="50"/>
 
-                <Label TextColor="{Binding colorError}" IsVisible="{Binding MostrarError}" Text="{Binding MensajeError}"/>
+                <Label TextColor="{StaticResource colorError}" IsVisible="{Binding MostrarError}" Text="{Binding MensajeError}"/>
                 
                 <Button Text="Ingresar" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="50" 
                        BorderWidth="1" BorderColor="White" TextColor="White" BackgroundColor="Transparent" Command="{Binding IngresarCommand}"/>

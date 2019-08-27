@@ -2,8 +2,20 @@
 <comun:ContenPageBase xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Examen.App.Views.Persona.ListaPersonasView"
-             xmlns:comun="clr-namespace:Examen.App.Comun">
-    
-    
-    
+             xmlns:comun="clr-namespace:Examen.App.Comun"
+             BindingContext="{Binding Source={StaticResource LocacionApp}, Path=PersonaViewModel}">
+
+    <ScrollView>
+        <StackLayout Spacing="0">
+            <ListView
+                 ItemsSource="{Binding ListaPersonas}"
+                 SelectedItem="{Binding Persona, Mode=TwoWay}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding NombreCompleto}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
 </comun:ContenPageBase>

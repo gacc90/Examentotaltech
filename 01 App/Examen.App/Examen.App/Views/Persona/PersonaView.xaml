@@ -3,6 +3,135 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Examen.App.Views.Persona.PersonaView"
              xmlns:comun="clr-namespace:Examen.App.Comun">
-    
-    
+
+    <StackLayout Spacing="16">
+        <Grid
+                    Padding="16"
+                    BackgroundColor="White"
+                    ColumnSpacing="0"
+                    RowSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Image Grid.Column="0" Grid.RowSpan="3"  Aspect="AspectFill"  HeightRequest="120" WidthRequest="100"/>
+            <Label
+                        Grid.Column="1"
+                        Margin="16,0,0,16"                        
+                        FontSize="14"                        
+                        Text=""
+                        TextColor="Black" />
+            <Label
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Margin="16,0,0,16"                        
+                        FontSize="14"                        
+                        Text=""
+                        TextColor="Black" />
+        </Grid>
+        <Grid RowSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label
+                        Grid.ColumnSpan="2"
+                        Margin="16"                       
+                        FontSize="16"                        
+                        Text="Dirección"
+                        TextColor="Black" />
+
+            <BoxView Grid.Row="1" Grid.ColumnSpan="2"/>
+
+            <Label      Grid.Row="2"                                                          
+                        FontSize="14"                        
+                        Text="Calle: "
+                        TextColor="Black" />
+
+            <Label      Grid.Row="2"                                                           
+                        Grid.Column="1"
+                        FontSize="14"                        
+                        Text="Nombre Calle"
+                        TextColor="Black" />
+            
+            <Label      Grid.Row="3"                                                          
+                        FontSize="14"                        
+                        Text="Ciudad_ "
+                        TextColor="Black" />
+
+            <Label      Grid.Row="3"                                                           
+                        Grid.Column="1"
+                        FontSize="14"                        
+                        Text="Nombre Ciudad"
+                        TextColor="Black" />
+
+            <Label      Grid.Row="4"                                                          
+                        FontSize="14"                        
+                        Text="Estado "
+                        TextColor="Black" />
+
+            <Label      Grid.Row="4"                                                           
+                        Grid.Column="1"
+                        FontSize="14"                        
+                        Text="Nombre Estado"
+                        TextColor="Black" />
+
+            <Label      Grid.Row="5"                                                          
+                        FontSize="14"                        
+                        Text="Codigo Postal: "
+                        TextColor="Black" />
+
+            <Label      Grid.Row="5"                                                           
+                        Grid.Column="1"
+                        FontSize="14"                        
+                        Text="Nombre Codigo Postal"
+                        TextColor="Black" />
+
+            <Label      Grid.Row="6"                                                          
+                        FontSize="14"                        
+                        Text="Telefono: "
+                        TextColor="Black" />
+
+            <Label      Grid.Row="6"                                                           
+                        Grid.Column="1"
+                        FontSize="14"                        
+                        Text="Nombre Telefono"
+                        TextColor="Black" />
+        </Grid>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label                       
+                        Margin="16"                       
+                        FontSize="16"                        
+                        Text="Ubicación"
+                        TextColor="Black" />
+
+            <BoxView Grid.Row="1"/>
+
+            <WebView Grid.Row="2"></WebView>
+        </Grid>
+
+        <Button Text="Contacto" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" HeightRequest="50" 
+                       BorderWidth="1" BorderColor="White" TextColor="White" BackgroundColor="Transparent"/>
+    </StackLayout>
 </comun:ContenPageBase>

@@ -8,6 +8,8 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Modelo = Examen.Servicios.Entidades.Modelo;
+using System.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace Examen.Servicios.Aplicacion.Helpers
 {
@@ -39,8 +41,12 @@ namespace Examen.Servicios.Aplicacion.Helpers
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                return Newtonsoft.Json.JsonConvert.DeserializeObject<ListResponse<Modelo.Persona>>(content);
-            }            
+                dynamic json = JValue.Parse(content);
+                var lista = Newtonsoft.Json.JsonConvert.DeserializeObject<IEnumerable<Modelo.Persona>>(content);
+                var listaResponse = new ListResponse<Modelo.Persona>();
+                //listaResponse.Model = lista.ToList();
+                return listaResponse;
+            }
             return default(IListResponse<Modelo.Persona>);
         }
     }

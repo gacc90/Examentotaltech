@@ -68,6 +68,8 @@ namespace Examen.App.ViewModels
         private async Task Ingresar()
         {
             this.IsBusy = true;
+            MostrarError = false;
+            MensajeError = string.Empty;
             ValidatorLogin validador = new ValidatorLogin();
             ValidationResult resultadoValidador = (await validador.ValidateAsync(new Modelo.Usuario() { Correo = Correo, Password = Password }));
             if (resultadoValidador.IsValid)
@@ -95,7 +97,7 @@ namespace Examen.App.ViewModels
                 foreach (var error in resultadoValidador.Errors)
                 {
                     MostrarError = true;
-                    MensajeError = "Error";
+                    MensajeError += $"{error.ErrorMessage}{System.Environment.NewLine}";
                     //if ("Password" == error.PropertyName)
                     //{
                     //    MostrarErrorPassword = true;

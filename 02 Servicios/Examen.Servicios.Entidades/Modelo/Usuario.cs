@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,6 +13,7 @@ namespace Examen.Servicios.Entidades.Modelo
 
         public string Password { get; set; }
 
+        [JsonProperty("token")]
         public string Token { get; set; }
     }
 }

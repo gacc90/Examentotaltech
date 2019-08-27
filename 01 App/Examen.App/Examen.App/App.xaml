@@ -8,7 +8,7 @@
 
         <!--LOGIN BACKGRAUND-->
         <Style x:Key="LoginStyle" TargetType="ContentPage">
-            <Setter Property="BackgroundColor" Value="#686de0" />
+            <Setter Property="BackgroundColor" Value="#00cec9" />
         </Style>
 
         <!--IMAGEN LOGIN BACKGRAUND-->
