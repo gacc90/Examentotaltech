@@ -55,6 +55,8 @@ namespace Examen.App.ViewModels
         public PersonaViewModel()
         {
             this.IsBusy = true;
+            if (listaPersonas == null)
+                listaPersonas = new ObservableCollection<Modelo.Persona>();
             SeleccionarPersonaCommand = new AutoRelayCommand<object>(async (obj) => await SeleccionarPersona(obj));
             ActualizarListaCommand = new AutoRelayCommand(async () => await ActualizarLista());
             Task.Run(async () => await ConsultarPersonas()).Wait();
@@ -69,9 +71,11 @@ namespace Examen.App.ViewModels
             try
             {
                 var personas = (await ApiPersonaJson.Instance.ObtenerPersonas<IListResponse<Modelo.Persona>>($"10"));
-                if (ListaPersonas != null)
+                if (personas != null)
+                {
                     ListaPersonas.Clear();
-                ListaPersonas = new ObservableCollection<Modelo.Persona>(personas as List<Modelo.Persona>);                    
+                    ListaPersonas = new ObservableCollection<Modelo.Persona>(personas.Model as List<Modelo.Persona>);                    
+                }
             }
             catch (Exception ex)
             {

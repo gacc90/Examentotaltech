@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,11 +7,12 @@ using System.Text;
 namespace Examen.Servicios.Entidades.Modelo
 {
     [Serializable]
-    [JsonObject(Title = "results")]
     public partial class Persona : BaseDTO
     {
+        public string NombreCompleto => $"{Nombres.Alias} {Nombres.Nombre} {Nombres.Apellido}";
+
         [JsonProperty("name")]
-        public string NombreCompleto { get; set; }
+        public Nombres Nombres { get; set; }
 
         public string Rating { get; set; }
 
@@ -25,5 +27,17 @@ namespace Examen.Servicios.Entidades.Modelo
 
         [JsonProperty("picture")]
         public virtual Foto Foto { get; set; }
+    }
+
+    public class Nombres
+    {
+        [JsonProperty("title")]
+        public string Alias { get; set; }
+
+        [JsonProperty("first")]
+        public string Nombre { get; set; }
+
+        [JsonProperty("last")]
+        public string Apellido { get; set; }
     }
 }

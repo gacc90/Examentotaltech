@@ -8,11 +8,30 @@
     <ScrollView>
         <StackLayout Spacing="0">
             <ListView
-                 ItemsSource="{Binding ListaPersonas}"
+                 ItemsSource="{Binding ListaPersonas}" RowHeight="80"
                  SelectedItem="{Binding Persona, Mode=TwoWay}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding NombreCompleto}"/>
+                        <ViewCell>
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="1"
+                                       Text="{Binding NombreCompleto}"
+                                       LineBreakMode="NoWrap" FontAttributes="Bold" FontSize="14" />
+                                <Label Grid.Row="1" Grid.Column="1"
+                                       Text="{Binding Correo}" FontAttributes="Bold"
+                                       LineBreakMode="NoWrap" HorizontalOptions="StartAndExpand" FontSize="12"/>
+                                <Label Grid.Row="2" Grid.Column="1"                                       
+                                      Text="{Binding Direccion.Calle}"
+                                      HorizontalOptions="StartAndExpand" LineBreakMode="WordWrap" FontSize="12"/>
+                                <Image Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" HorizontalOptions="CenterAndExpand"
+                                       Source="{Binding Foto.Thumbnail}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"                                      
+                                       VerticalOptions="Center"  />
+                            </Grid>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Modelo = Examen.Servicios.Entidades.Modelo;
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace Examen.Servicios.Aplicacion.Helpers
 {
@@ -36,18 +37,28 @@ namespace Examen.Servicios.Aplicacion.Helpers
 
         public async Task<IListResponse<Modelo.Persona>> ObtenerPersonas<T>(string numeroPagina)
         {
-            var response = await GetAsync($"?results{numeroPagina}");
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var content = await response.Content.ReadAsStringAsync();
-                dynamic json = JValue.Parse(content);
-                var lista = Newtonsoft.Json.JsonConvert.DeserializeObject<IEnumerable<Modelo.Persona>>(content);
-                var listaResponse = new ListResponse<Modelo.Persona>();
-                //listaResponse.Model = lista.ToList();
-                return listaResponse;
+                var response = await GetAsync($"?results{numeroPagina}");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    JObject jo = JObject.Parse(content);
+                    JToken token = (jo["results"] as JArray);
+                    var lista = JsonConvert.DeserializeObject<IEnumerable<Modelo.Persona>>(token.ToString());
+                    var listaResponse = new ListResponse<Modelo.Persona>();
+                    listaResponse.Model = lista.ToList();
+                    return listaResponse;
+                }
+                else
+                {
+                    return default(IListResponse<Modelo.Persona>);
+                }
             }
-            return default(IListResponse<Modelo.Persona>);
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }
